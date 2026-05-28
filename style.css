@@ -1,0 +1,323 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0f141e;
+    color: #e2e8f0;
+    margin: 0;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.dashboard {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "left chart right"
+        "left bottom bottom";
+    grid-template-columns: 280px 1fr 320px;
+    grid-template-rows: auto 1fr auto;
+    gap: 20px;
+}
+
+header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+    color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: #cbd5e1;
+    color: #0f141e;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.sidebar-left, .chart-area, .sidebar-right, .bottom-area {
+    background: #171f2c;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.sidebar-left { grid-area: left; }
+.chart-area { 
+    grid-area: chart; 
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    border-left: 1px solid #334155;
+    border-bottom: 1px solid #334155;
+}
+
+.chart-row {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 14%;
+    width: 100%;
+}
+
+.y-axis-label {
+    position: absolute;
+    left: -25px;
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.y-axis-title {
+    position: absolute;
+    left: -55px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-size: 12px;
+    color: #e2e8f0;
+    white-space: nowrap;
+}
+
+.bar-wrapper {
+    position: relative;
+    height: 80%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.bar-prospects {
+    position: absolute;
+    height: 100%;
+    background-color: #7b889b;
+    border-radius: 0 4px 4px 0;
+    transition: width 0.3s;
+}
+
+.bar-leads {
+    position: absolute;
+    height: 80%;
+    background-color: #92a0b3;
+    border-radius: 0 4px 4px 0;
+    transition: width 0.3s;
+}
+
+.bar-customers {
+    position: absolute;
+    height: 60%;
+    background-color: #cbd5e1;
+    border-radius: 0 4px 4px 0;
+    transition: width 0.3s;
+}
+
+.x-axis-labels {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    margin-top: 10px;
+}
+
+.x-axis-labels span {
+    position: absolute;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 10px;
+    color: #94a3b8;
+}
+
+.x-axis-labels span:first-child {
+    transform: none;
+}
+.x-axis-labels span:last-child {
+    transform: translateX(-100%);
+}
+
+.chart-tooltip {
+    position: absolute;
+    background: #334155;
+    color: #f1f5f9;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    border: 1px solid #475569;
+}
+
+.sidebar-right { grid-area: right; background: transparent; padding: 0; box-shadow: none; display: flex; flex-direction: column; gap: 20px; }
+.bottom-area { grid-area: bottom; display: flex; flex-direction: column; gap: 25px; }
+
+.stat-card.prospects-card {
+    background-color: #7b889b;
+    color: #161a22;
+}
+
+.stat-card.leads-card {
+    background-color: #92a0b3;
+    color: #161a22;
+}
+
+.stat-card.customers-card {
+    background-color: #b7c4d4;
+    color: #161a22;
+}
+
+.progress-fill.bg-white {
+    background: #fff;
+}
+
+.prospects-card .progress-fill {
+    width: 100%;
+}
+
+/* Form Elements */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    color: #94a3b8;
+    margin-bottom: 8px;
+}
+
+.input-group input, .input-group select {
+    width: 100%;
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #f1f5f9;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-with-prefix {
+    display: flex;
+    align-items: center;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 6px;
+}
+
+.input-with-prefix span {
+    padding-left: 12px;
+    color: #94a3b8;
+}
+
+.input-with-prefix input {
+    border: none;
+    background: transparent;
+}
+
+/* Stat Cards */
+.stat-card {
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stat-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.stat-value {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.progress-track {
+    background: rgba(0, 0, 0, 0.2);
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+/* Sliders */
+.slider-group {
+    position: relative;
+}
+
+.slider-group label {
+    font-size: 14px;
+    color: #cbd5e1;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.slider-container input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: #334155;
+    height: 6px;
+    border-radius: 3px;
+    outline: none;
+}
+
+.slider-container input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.slider-value-label {
+    text-align: right;
+    font-size: 13px;
+    color: #cbd5e1;
+    margin-top: 5px;
+}
+
+.chart-placeholder {
+    text-align: center;
+    color: #475569;
+}
