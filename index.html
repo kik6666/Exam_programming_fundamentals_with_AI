@@ -37,8 +37,27 @@
                 </div>
             </div>
             <div class="input-group">
-                <label for="currencySelect">Currency</label>
-                <select id="currencySelect" title="Currency"><option>$ US Dollar</option></select>
+                <label>Currency</label>
+                <div class="custom-select-wrapper">
+                    <div class="custom-select-trigger" id="currencyTrigger">
+                        <span class="selected-value">$ US Dollar</span>
+                        <svg class="dropdown-arrows" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="7 15 12 20 17 15"></polyline>
+                            <polyline points="7 9 12 4 17 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="custom-options" id="currencyOptions">
+                        <div class="custom-option selected" data-value="usd">
+                            $ US Dollar
+                        </div>
+                        <div class="custom-option" data-value="eur">
+                            € Bulgarian EUR
+                        </div>
+                        <div class="custom-option" data-value="cny">
+                            ¥ Chinese Yuan
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="input-group">
                 <label for="campaignStart">Campaign Start</label>

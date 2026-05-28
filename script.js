@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Custom Language Dropdown logic
     const langTrigger = document.getElementById("languageTrigger");
     const langOptions = document.getElementById("languageOptions");
-    const langOptionsList = document.querySelectorAll(".custom-option");
+    const langOptionsList = langOptions ? langOptions.querySelectorAll(".custom-option") : [];
 
     if (langTrigger && langOptions) {
         langTrigger.addEventListener("click", () => {
@@ -48,6 +48,32 @@ document.addEventListener("DOMContentLoaded", () => {
         document.addEventListener("click", (e) => {
             if (!langTrigger.contains(e.target) && !langOptions.contains(e.target)) {
                 langOptions.classList.remove("open");
+            }
+        });
+    }
+
+    // Custom Currency Dropdown logic
+    const currTrigger = document.getElementById("currencyTrigger");
+    const currOptions = document.getElementById("currencyOptions");
+    const currOptionsList = currOptions ? currOptions.querySelectorAll(".custom-option") : [];
+
+    if (currTrigger && currOptions) {
+        currTrigger.addEventListener("click", () => {
+            currOptions.classList.toggle("open");
+        });
+
+        currOptionsList.forEach(option => {
+            option.addEventListener("click", function() {
+                currTrigger.querySelector('.selected-value').innerHTML = this.innerHTML;
+                currOptions.classList.remove("open");
+                currOptionsList.forEach(opt => opt.classList.remove("selected"));
+                this.classList.add("selected");
+            });
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!currTrigger.contains(e.target) && !currOptions.contains(e.target)) {
+                currOptions.classList.remove("open");
             }
         });
     }
