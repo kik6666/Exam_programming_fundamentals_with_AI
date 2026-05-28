@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         langOptionsList.forEach(option => {
             option.addEventListener("click", function() {
-                langTrigger.innerHTML = this.innerHTML;
+                langTrigger.querySelector('.selected-value').innerHTML = this.innerHTML;
                 langOptions.classList.remove("open");
                 langOptionsList.forEach(opt => opt.classList.remove("selected"));
                 this.classList.add("selected");

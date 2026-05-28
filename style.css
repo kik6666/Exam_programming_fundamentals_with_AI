@@ -215,9 +215,18 @@ header h1 {
     border-radius: 6px;
     font-size: 14px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 8px;
     cursor: pointer;
+}
+.selected-value {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.dropdown-arrows {
+    color: #94a3b8;
 }
 .custom-options {
     position: absolute;
