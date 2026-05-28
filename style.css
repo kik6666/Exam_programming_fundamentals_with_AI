@@ -201,6 +201,69 @@ header h1 {
     width: 100%;
 }
 
+/* Custom Select styles */
+.custom-select-wrapper {
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none;
+    width: 100%;
+}
+.custom-select-trigger {
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #f1f5f9;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+.selected-value {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.dropdown-arrows {
+    color: #94a3b8;
+}
+.custom-options {
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #171f2c;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    margin-top: 4px;
+    z-index: 20;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+.custom-options.open {
+    display: block;
+}
+.custom-option {
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #f1f5f9;
+}
+.custom-option:hover, .custom-option.selected {
+    background: #334155;
+}
+.custom-option img, .custom-select-trigger img {
+    width: 20px;
+    border-radius: 2px;
+    object-fit: contain;
+}
+
 /* Form Elements */
 .input-group {
     margin-bottom: 20px;
@@ -292,6 +355,7 @@ header h1 {
 
 .slider-container input[type=range] {
     -webkit-appearance: none;
+    appearance: none;
     width: 100%;
     background: #334155;
     height: 6px;
