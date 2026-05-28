@@ -204,6 +204,7 @@ header h1 {
 /* Custom Select styles */
 .custom-select-wrapper {
     position: relative;
+    -webkit-user-select: none;
     user-select: none;
     width: 100%;
 }
@@ -354,6 +355,7 @@ header h1 {
 
 .slider-container input[type=range] {
     -webkit-appearance: none;
+    appearance: none;
     width: 100%;
     background: #334155;
     height: 6px;
