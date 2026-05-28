@@ -126,15 +126,38 @@ document.addEventListener("DOMContentLoaded", () => {
     function drawChart(totalProspects, totalLeads, totalCustomers) {
         chartContainer.innerHTML = "";
         
-        // Add Y-axis title
+        // Define axis max based on typical distribution in the screenshot
+        const xAxisMax = Math.ceil(totalProspects / 20) * 20 || 120;
+        const steps = 6;
+
+        // Render Background Grid layout (horizontal and vertical)
+        const gridBackground = document.createElement("div");
+        gridBackground.className = "grid-background";
+        
+        for (let i = 0; i <= steps; i++) {
+            // Vertical lines matching X-axis steps
+            if (i > 0) {
+                const vLine = document.createElement("div");
+                vLine.className = "grid-line-vertical";
+                vLine.style.left = `${(i / steps) * 100}%`;
+                gridBackground.appendChild(vLine);
+            }
+            
+            // Horizontal lines matching Y-axis rows
+            if (i > 0) {
+                const hLine = document.createElement("div");
+                hLine.className = "grid-line-horizontal";
+                hLine.style.top = `${((i - 1) / steps) * 100 + (100 / steps / 2)}%`;
+                gridBackground.appendChild(hLine);
+            }
+        }
+        chartContainer.appendChild(gridBackground);
+
+        // Add Y-axis title (moved inside chart logic)
         const yAxisTitle = document.createElement("div");
         yAxisTitle.className = "y-axis-title";
         yAxisTitle.textContent = "Months";
         chartContainer.appendChild(yAxisTitle);
-        
-        // Define axis max based on typical distribution in the screenshot
-        // They step up towards the total
-        const xAxisMax = Math.ceil(totalProspects / 20) * 20 || 120;
         
         for (let i = 1; i <= 6; i++) {
             // Distribute cumulative amounts across 6 months
@@ -162,15 +185,15 @@ document.addEventListener("DOMContentLoaded", () => {
             row.addEventListener("mouseenter", (e) => {
                 tooltip.style.opacity = "1";
                 tooltip.innerHTML = `
-                    <strong>Month #${i}</strong><br>
+                    Month #${i}<br>
                     Prospects: ${monthProspects}<br>
                     Leads: ${monthLeads}<br>
                     Customers: ${monthCustomers}
                 `;
             });
             row.addEventListener("mousemove", (e) => {
-                tooltip.style.left = e.pageX + 15 + "px";
-                tooltip.style.top = e.pageY + 15 + "px";
+                tooltip.style.left = e.pageX + 20 + "px";
+                tooltip.style.top = e.pageY - 35 + "px";
             });
             row.addEventListener("mouseleave", () => {
                 tooltip.style.opacity = "0";
@@ -182,7 +205,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // Render X-axis labels
         const labelsContainer = document.createElement("div");
         labelsContainer.className = "x-axis-labels";
-        const steps = 6;
         for (let i = 0; i <= steps; i++) {
             const val = Math.round((xAxisMax / steps) * i);
             const span = document.createElement("span");
