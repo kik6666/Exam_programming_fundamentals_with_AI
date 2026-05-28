@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadPredictor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1><span class="logo-icon">Y</span> LeadPredictor</h1>
+        </header>
+
+        <aside class="sidebar-left">
+            <div class="input-group">
+                <label for="languageSelect">Language</label>
+                <select id="languageSelect" title="Language"><option>🇺🇸 English</option></select>
+            </div>
+            <div class="input-group">
+                <label for="currencySelect">Currency</label>
+                <select id="currencySelect" title="Currency"><option>$ US Dollar</option></select>
+            </div>
+            <div class="input-group">
+                <label for="campaignStart">Campaign Start</label>
+                <input type="date" id="campaignStart" title="Campaign Start" value="2026-05-08">
+            </div>
+            <div class="input-group">
+                <label for="campaignEnd">Campaign End</label>
+                <input type="date" id="campaignEnd" title="Campaign End" value="2026-11-04">
+            </div>
+            
+            <div class="input-group">
+                <label for="totalRevenue">Total Revenue</label>
+                <div class="input-with-prefix">
+                    <span>$</span>
+                    <input type="number" id="totalRevenue" title="Total Revenue" value="10000">
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="avgOrderValue">Avg. Order Value</label>
+                <div class="input-with-prefix">
+                    <span>$</span>
+                    <input type="number" id="avgOrderValue" title="Avg. Order Value" value="1000">
+                </div>
+            </div>
+        </aside>
+
+        <main class="chart-area">
+            <div id="chartContainer" class="chart-container">
+                <!-- Dynamically populated chart -->
+            </div>
+        </main>
+
+        <aside class="sidebar-right">
+            <div class="stat-card prospects-card">
+                <div class="stat-header">
+                    <span class="stat-title">📁 Prospects</span>
+                    <span class="stat-percent">100%</span>
+                </div>
+                <div class="stat-value" id="prospectsValue">125</div>
+                <div class="progress-track">
+                    <div class="progress-fill bg-white"></div>
+                </div>
+            </div>
+            
+            <div class="stat-card leads-card">
+                <div class="stat-header">
+                    <span class="stat-title">👤 Leads</span>
+                    <span class="stat-percent" id="leadsPercent">20%</span>
+                </div>
+                <div class="stat-value" id="leadsValue">25</div>
+                <div class="progress-track">
+                    <div class="progress-fill bg-white" id="leadsBar"></div>
+                </div>
+            </div>
+
+            <div class="stat-card customers-card">
+                <div class="stat-header">
+                    <span class="stat-title">🏆 Customers</span>
+                    <span class="stat-percent" id="customersPercent">8%</span>
+                </div>
+                <div class="stat-value" id="customersValue">10</div>
+                <div class="progress-track">
+                    <div class="progress-fill bg-white" id="customersBar"></div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="bottom-area">
+            <div class="slider-group">
+                <div class="slider-header">
+                    <label for="leadRate">Lead Response Rate</label>
+                </div>
+                <div class="slider-container">
+                    <input type="range" id="leadRate" title="Lead Response Rate" min="1" max="100" value="40" step="1">
+                </div>
+                <div class="slider-value-label"><span id="leadRateLabel">40.00%</span></div>
+            </div>
+
+            <div class="slider-group">
+                <div class="slider-header">
+                    <label for="prospectRate">Prospect Response Rate</label>
+                </div>
+                <div class="slider-container">
+                    <input type="range" id="prospectRate" title="Prospect Response Rate" min="1" max="100" value="20" step="1">
+                </div>
+                <div class="slider-value-label"><span id="prospectRateLabel">20.00%</span></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
