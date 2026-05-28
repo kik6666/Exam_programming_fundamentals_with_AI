@@ -26,6 +26,32 @@ document.addEventListener("DOMContentLoaded", () => {
     tooltip.className = "chart-tooltip";
     document.body.appendChild(tooltip);
 
+    // Custom Language Dropdown logic
+    const langTrigger = document.getElementById("languageTrigger");
+    const langOptions = document.getElementById("languageOptions");
+    const langOptionsList = document.querySelectorAll(".custom-option");
+
+    if (langTrigger && langOptions) {
+        langTrigger.addEventListener("click", () => {
+            langOptions.classList.toggle("open");
+        });
+
+        langOptionsList.forEach(option => {
+            option.addEventListener("click", function() {
+                langTrigger.innerHTML = this.innerHTML;
+                langOptions.classList.remove("open");
+                langOptionsList.forEach(opt => opt.classList.remove("selected"));
+                this.classList.add("selected");
+            });
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!langTrigger.contains(e.target) && !langOptions.contains(e.target)) {
+                langOptions.classList.remove("open");
+            }
+        });
+    }
+
     function calculatePredictor() {
         // Parse inputs
         const revenue = parseFloat(totalRevenueInput.value) || 0;

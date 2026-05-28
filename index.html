@@ -14,8 +14,23 @@
 
         <aside class="sidebar-left">
             <div class="input-group">
-                <label for="languageSelect">Language</label>
-                <select id="languageSelect" title="Language"><option>🇺🇸 English</option></select>
+                <label>Language</label>
+                <div class="custom-select-wrapper">
+                    <div class="custom-select-trigger" id="languageTrigger">
+                        <img src="https://flagcdn.com/w20/us.png" alt="US"> English
+                    </div>
+                    <div class="custom-options" id="languageOptions">
+                        <div class="custom-option selected" data-value="en">
+                            <img src="https://flagcdn.com/w20/us.png" alt="US"> English
+                        </div>
+                        <div class="custom-option" data-value="bg">
+                            <img src="https://flagcdn.com/w20/bg.png" alt="BG"> Bulgarian
+                        </div>
+                        <div class="custom-option" data-value="cn">
+                            <img src="https://flagcdn.com/w20/cn.png" alt="CN"> Chinese
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="input-group">
                 <label for="currencySelect">Currency</label>
